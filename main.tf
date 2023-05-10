@@ -103,6 +103,3 @@ module "vpc_module" {
   version = "3.11.0"
   cidr    = "10.0.0.0/16"
 }
-
-
-
