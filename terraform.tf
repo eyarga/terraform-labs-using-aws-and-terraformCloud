@@ -1,12 +1,26 @@
 terraform {
   required_version = "> 1.0.0"
 
-  # ADDING S3 BACKEND
+/*
+ * ADDING S3 BACKEND 
+ * -----------------
+  For migration to the s3 bucket or remote: Decomment and run terraform init -migrate-state
   backend "s3" {
-    bucket = "my-terraform-store-backend-lab"
-    key    = "dev/aws_infra"
-    region = "us-east-1"
+    bucket         = "my-terraform-store-backend-lab"
+    key            = "dev/aws_infra"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-blocks"
+    encypt         = true
   }
+
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "Enterprise-Cloud"
+    workspaces {
+      name = "my-terraform-new-app"
+    }
+  }
+*/
 
   required_providers {
     aws = {
